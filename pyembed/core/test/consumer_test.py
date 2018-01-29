@@ -69,7 +69,7 @@ def test_should_add_max_width():
         result = __set_up_mocks(mock_get, mock_parse)
 
         assert consumer.get_first_oembed_response(
-            ['http://example.com/oembed'], max_width=100) == result
+            ['http://example.com/oembed'], maxwidth=100) == result
 
         mock_get.assert_called_with('http://example.com/oembed?maxwidth=100')
         mock_parse.assert_called_with('hello, world', 'application/json')
@@ -81,7 +81,7 @@ def test_should_add_max_height():
         result = __set_up_mocks(mock_get, mock_parse)
 
         assert consumer.get_first_oembed_response(
-            ['http://example.com/oembed'], max_height=200) == result
+            ['http://example.com/oembed'], maxheight=200) == result
 
         mock_get.assert_called_with('http://example.com/oembed?maxheight=200')
         mock_parse.assert_called_with('hello, world', 'application/json')
@@ -93,7 +93,7 @@ def test_should_add_max_width_and_height():
         result = __set_up_mocks(mock_get, mock_parse)
 
         assert consumer.get_first_oembed_response(
-            ['http://example.com/oembed'], max_width=100, max_height=200) == result
+            ['http://example.com/oembed'], maxwidth=100, maxheight=200) == result
 
         mock_get.assert_called_with(
             'http://example.com/oembed?maxwidth=100&maxheight=200')
@@ -106,7 +106,7 @@ def test_should_add_max_width_when_query_string_present():
         result = __set_up_mocks(mock_get, mock_parse)
 
         assert consumer.get_first_oembed_response(
-            ['http://example.com/oembed?format=json'], max_width=100) == result
+            ['http://example.com/oembed?format=json'], maxwidth=100) == result
 
         mock_get.assert_called_with(
             'http://example.com/oembed?format=json&maxwidth=100')
@@ -119,7 +119,7 @@ def test_should_add_max_height_when_query_string_present():
         result = __set_up_mocks(mock_get, mock_parse)
 
         assert consumer.get_first_oembed_response(
-            ['http://example.com/oembed?format=json'], max_height=200) == result
+            ['http://example.com/oembed?format=json'], maxheight=200) == result
 
         mock_get.assert_called_with(
             'http://example.com/oembed?format=json&maxheight=200')
@@ -132,7 +132,7 @@ def test_should_add_max_width_and_height_when_query_string_present():
         result = __set_up_mocks(mock_get, mock_parse)
 
         assert consumer.get_first_oembed_response(
-            ['http://example.com/oembed?format=json'], max_width=100, max_height=200) == result
+            ['http://example.com/oembed?format=json'], maxwidth=100, maxheight=200) == result
 
         mock_get.assert_called_with(
             'http://example.com/oembed?format=json&maxwidth=100&maxheight=200')

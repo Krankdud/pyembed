@@ -50,7 +50,7 @@ def test_should_get_another_correct_embedding():
 @vcr.use_cassette('pyembed/core/test/fixtures/cassettes/maximum_height.yml')
 def test_should_embed_with_maximum_height():
     embedding = PyEmbed().embed(
-        'http://www.youtube.com/watch?v=9bZkp7q19f0', max_height=200)
+        'http://www.youtube.com/watch?v=9bZkp7q19f0', maxheight=200)
     assert 'height="200"' in embedding
 
 

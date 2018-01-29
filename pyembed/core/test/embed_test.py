@@ -45,7 +45,7 @@ def test_should_embed():
 
         discoverer.get_oembed_urls.assert_called_with('http://example.com/')
         mock_get.assert_called_with(
-            'http://example.com/oembed?format=json', max_width=None, max_height=None)
+            'http://example.com/oembed?format=json')
         renderer.render.assert_called_with('http://example.com/', response)
 
 
@@ -65,7 +65,7 @@ def test_should_embed_xml():
 
         discoverer.get_oembed_urls.assert_called_with('http://example.com/')
         mock_get.assert_called_with(
-            'http://example.com/oembed?format=xml', max_width=None, max_height=None)
+            'http://example.com/oembed?format=xml')
         renderer.render.assert_called_with('http://example.com/', response)
 
 
@@ -81,12 +81,12 @@ def test_should_embed_with_max_width_and_height():
         renderer.render.return_value = '<h1>hi</h1>'
 
         result = PyEmbed(discoverer, renderer).embed(
-            'http://example.com/', 100, 200)
+            'http://example.com/', maxwidth=100, maxheight=200)
         assert result == '<h1>hi</h1>'
 
         discoverer.get_oembed_urls.assert_called_with('http://example.com/')
         mock_get.assert_called_with(
-            'http://example.com/oembed?format=json', max_width=100, max_height=200)
+            'http://example.com/oembed?format=json', maxwidth=100, maxheight=200)
         renderer.render.assert_called_with('http://example.com/', response)
 
 
@@ -95,4 +95,4 @@ def test_should_throw_error_on_request_error():
         discoverer = Mock()
         discoverer.get_oembed_urls.side_effect = RequestException()
 
-        PyEmbed(discoverer, None).embed('http://example.com/', 100, 200)
+        PyEmbed(discoverer, None).embed('http://example.com/', maxwidth=100, maxheight=200)

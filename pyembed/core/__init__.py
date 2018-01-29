@@ -43,20 +43,19 @@ class PyEmbed(object):
         self.discoverer = discoverer
         self.renderer = renderer
 
-    def embed(self, url, max_width=None, max_height=None):
+    def embed(self, url, **parameters):
         """Returns an HTML representation of a resource, given a URL.  This
            can be directly embedded in a web page.
 
         :param url: the content URL.
-        :param max_width: (optional) the maximum width of the embedded resource.
-        :param max_height: (optional) the maximum height of the embedded resource.
+        :param parameters: (optional) parameters of the embedded resource
         :returns: an HTML representation of the resource.
         :raises PyEmbedError: if there is an error fetching the response.
         """
         try:
             oembed_urls = self.discoverer.get_oembed_urls(url)
             response = consumer.get_first_oembed_response(
-                oembed_urls, max_width=max_width, max_height=max_height)
+                oembed_urls, **parameters)
         except requests.exceptions.RequestException as e:
             raise PyEmbedError(e)
 
