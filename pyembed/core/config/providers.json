@@ -990,5 +990,19 @@
                 "discovery": true
             }
         ]
+    },
+    {
+        "provider_name": "Twitter",
+        "provider_url": "https:\/\/www.twitter.com\/",
+        "endpoints": [
+            {
+                "schemes": [
+                    "https:\/\/twitter.com\/*\/status\/*",
+                    "https:\/\/*.twitter.com\/*\/status\/*"
+                ],
+                "url": "https:\/\/publish.twitter.com\/oembed",
+                "discovery": true
+            }
+        ]
     }
 ]
